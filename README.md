@@ -1,4 +1,4 @@
-# -nstagramTakip-ste-iGeri-ekme
+instagramTakipisteğiGeriçekme
 İnstagram üzerinden gönderilen takip isteklerini otomatik olarak geri çeken otomasyon bot 
 
 Kullanım için öncelikle python kurmanız gerekmekte 
@@ -98,4 +98,4 @@ Artık hazırsın.
 
 
 
-Eğer bir sorunla karşılaşırsanız Yaganmetin1 instagram adresinden benimle iletişime geçebilirsiniz.
+Eğer bir sorunla karşılaşırsanız Yaganmetin1 instagram hesabından benimle iletişime geçebilirsiniz.
