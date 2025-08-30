@@ -24,7 +24,11 @@ print("✅ Giriş başarılı!")
 
 # Kullanıcı listesi (senin verdiğin 30 kişi)
 kullanicilar = [
-    "yaganmetin1",
+
+    "örnek1",
+    "örnek2",
+    "örnek3",
+    
 ]
 
 bekleme_suresi = 2.5  # Her kullanıcı sonrası bekleme süresi
@@ -59,3 +63,4 @@ for kullanici in kullanicilar:
 
 print("🎉 Tüm işlemler tamamlandı.")
 browser.quit()
+
