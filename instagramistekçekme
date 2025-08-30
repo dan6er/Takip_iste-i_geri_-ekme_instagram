@@ -1,0 +1,63 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# chromedriver yolu (senin bilgisayarındaki yola göre değiştir)
+chrome_path = r"C:\Users\metin\OneDrive\Masaüstü\chromedriver.exe"
+service = Service(executable_path=chrome_path)
+
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+browser = webdriver.Chrome(service=service, options=options)
+
+# Instagram giriş sayfasını aç
+browser.get("https://www.instagram.com/accounts/login/")
+
+print("🔑 Lütfen giriş yapın...")
+WebDriverWait(browser, 300).until(
+    EC.presence_of_element_located((By.XPATH, "//a[contains(@href, '/accounts/edit/')]"))
+)
+print("✅ Giriş başarılı!")
+
+# Kullanıcıdan txt dosyası yolunu al
+dosya_yolu = input("📂 Kullanıcı listesinin olduğu TXT dosyasının yolunu girin: ")
+
+# TXT dosyasından kullanıcıları oku
+with open(dosya_yolu, "r", encoding="utf-8") as f:
+    kullanicilar = [satir.strip() for satir in f.readlines() if satir.strip()]
+
+bekleme_suresi = 5  # Her kullanıcı sonrası bekleme süresi
+
+for kullanici in kullanicilar:
+    try:
+        profil_url = f"https://www.instagram.com/{kullanici}/"
+        browser.get(profil_url)
+        print(f"➡️ {kullanici} profiline gidildi.")
+
+        # İstek Gönderildi butonuna tıkla
+        istek_butonu = WebDriverWait(browser, 5).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//button[contains(@class,'_aswp _aswr _aswv _asw_ _asx2')]//div[@class='_ap3a _aaco _aacw _aad6 _aade'][contains(text(),'İstek Gönderildi')]")
+            )
+        )
+        istek_butonu.click()
+        time.sleep(0.5)
+
+        # Açılan penceredeki Takibi Bırak butonuna tıkla
+        takibi_birak_butonu = WebDriverWait(browser, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Takibi Bırak')]"))
+        )
+        takibi_birak_butonu.click()
+
+        print(f"✅ {kullanici} için takip isteği iptal edildi.")
+        time.sleep(bekleme_suresi)
+
+    except Exception:
+        print(f"❌ {kullanici} için işlem yapılamadı veya 'İstek Gönderildi' butonu bulunamadı.")
+        time.sleep(bekleme_suresi)
+
+print("🎉 Tüm işlemler tamamlandı.")
+browser.quit()
