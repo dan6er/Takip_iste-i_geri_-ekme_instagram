@@ -82,4 +82,20 @@ Kodunu çalıştır,kod çalıştığında senden kullanıcıların hangi txt do
 Giriş yaptıktan sonra kendi profiline tılaman yeterli olacak sonrasında arkana yaslan ve işi bota bırak.
 
 
+Eğer kodun txt dosyasını bulamıyorsa kullanıcı isimlerinin direkt koda gömuldüğü versiyonu da paylaştım,
+Bunun için yapman gereken ChatGPT ye 
+Sana vermiş olduğum kullanıcı isimlerini şu şekilde gir
+kullanicilar = [
+    "örnek1",
+    "örnek2",
+    "örnek3",
+    
+]
+Demen yeterli olacaktır
+
+Sonrasında ChatGPT nin hazırlamış olduğu kullanıcı isimlerini txtİçermeyen.py kodunun içerisine girmen gerekiyor.
+Artık hazırsın.
+
+
+
 Eğer bir sorunla karşılaşırsanız Yaganmetin1 instagram adresinden benimle iletişime geçebilirsiniz.
